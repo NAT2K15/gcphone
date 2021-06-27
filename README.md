@@ -60,19 +60,7 @@ To put the gcphone to work on your server you must follow these steps
 4º If once the gcphone is inserted, it does not load the images, try to delete the cache of the server and your FiveM and it will be ready for operation
 ```
 **Requirements**
-``` bash
-Official website esx_addons_gcphone -> https://github.com/N3MTV/gcphone/tree/master/resources/esx_addons_gcphone
-Official website new_banking -> https://github.com/NewWayRP/new_banking
-Credits
-
-ElBichop (Owner gcphone v3) https://www.linkedin.com/in/manuel-jim%C3%A9nez-l%C3%B3pez-205420158/
-
-Paty Blue (Designer) @psasfer
-
-Original GCPhone by Gannon https://github.com/N3MTV/gcphone
-
-License
-GNU v3
-
-Manuel (ElBichop)
+```
+[mysql-async](https://github.com/brouznouf/fivem-mysql-async)
+[Mumble Voip](https://github.com/FrazzIe/mumble-voip-fivem)
 ```
