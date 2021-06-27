@@ -19,3 +19,6 @@
 
 **Orginal Creator**
 [Github - manueljlz](https://github.com/manueljlz/)
+
+**Edits**
+[Github - NAT2K15](https://github.com/nat2k15)
