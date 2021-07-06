@@ -343,7 +343,7 @@ end)
 
 RegisterServerEvent('gcPhone:register_FixePhone')
 AddEventHandler('gcPhone:register_FixePhone', function(phone_number, coords)
-	Config.FixePhone[phone_number] = {name = _U('phone_booth'), coords = {x = coords.x, y = coords.y, z = coords.z}}
+	Config.FixePhone[phone_number] = {name = ('phone_booth'), coords = {x = coords.x, y = coords.y, z = coords.z}}
 	TriggerClientEvent('gcPhone:register_FixePhone', -1, phone_number, Config.FixePhone[phone_number])
 end)
 
