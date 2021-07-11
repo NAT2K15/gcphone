@@ -1,7 +1,5 @@
 Config = {}
 
--- Script locale (only .Lua)
-
 Config.AutoFindFixePhones = true -- Automatically add pay phones as they are found by their models.
 
 Config.FixePhone = {
