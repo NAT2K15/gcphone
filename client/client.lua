@@ -151,7 +151,7 @@ function showFixePhoneHelper (coords)
       coords.x, coords.y, coords.z, 1)
     if dist <= 2.5 then
       SetTextComponentFormat("STRING")
-      AddTextComponentString(_U('use_fixed', data.name, number))
+      AddTextComponentString('use_fixed', data.name, number)
       DisplayHelpTextFromStringLabel(0, 0, 0, -1)
       if IsControlJustPressed(1, Config.KeyTakeCall) then
         startFixeCall(number)
@@ -205,7 +205,7 @@ Citizen.CreateThread(function ()
           inRangedist = dist
           if (dist <= 1.5) then 
             SetTextComponentFormat("STRING")
-            AddTextComponentString(_U('key_answer'))
+            AddTextComponentString('key_answer')
             DisplayHelpTextFromStringLabel(0, 0, 1, -1)
             if IsControlJustPressed(1, Config.KeyTakeCall) then
               PhonePlayCall(true)
@@ -288,12 +288,12 @@ AddEventHandler("gcPhone:receiveMessage", function(message)
   SendNUIMessage({event = 'newMessage', message = message})
   table.insert(messages, message)
   if message.owner == 0 then
-    local text = _U('new_message')
+    local text = ('new_message')
     if Config.ShowNumberNotification == true then
-      text = _U('new_message_from', message.transmitter)
+      text = "New message from ~b~"  .. message.transmitter
       for _,contact in pairs(contacts) do
         if contact.number == message.transmitter then
-          text = _U('new_message_transmitter', contact.display)
+          text = "New message from ~b~"  .. contact.display
           break
         end
       end
