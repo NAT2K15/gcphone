@@ -43,16 +43,6 @@ end
 function ShowNoPhoneWarning ()
 end
 
-AddEventHandler('esx:onPlayerDeath', function()
-  if menuIsOpen then
-    menuIsOpen = false
-    TriggerEvent('gcPhone:setMenuStatus', false)
-    SendNUIMessage({show = false})
-    PhonePlayOut()
-    SetBigmapActive(0,0)
-  end
-end)
-
 Citizen.CreateThread(function() 
   if NetworkIsSessionStarted() then
     TriggerServerEvent("gcPhone:playerLoaded", GetPlayerServerId(PlayerId()))
