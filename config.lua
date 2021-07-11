@@ -16,6 +16,6 @@ Config.KeyOpenClose = 167 -- F6
 Config.KeyTakeCall  = 38  -- E
 
 Config.UseMumbleVoIP = true -- Use Frazzle's Mumble-VoIP Resource (Recomended!) https://github.com/FrazzIe/mumble-voip
-Config.UseTokoVoIP   = false -- Didn't test this yet. I say just use Mumble for now
+Config.UsePmaVoice   = false -- PMA voice for some of the people who wanted it https://forum.cfx.re/t/release-voip-pma-voice-mumble-voip-alternative/1896255
 
 Config.ShowNumberNotification = true -- Show Number or Contact Name when you receive new SMS
