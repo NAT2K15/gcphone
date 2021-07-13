@@ -45,7 +45,9 @@ end
 
 Citizen.CreateThread(function() 
   if NetworkIsSessionStarted() then
+    Citizen.Wait(1000)
     TriggerServerEvent("gcPhone:playerLoaded", GetPlayerServerId(PlayerId()))
+    Citizen.Wait(1000)
     TriggerServerEvent('gcPhone:allUpdate')
   end
 end)
