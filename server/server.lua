@@ -454,6 +454,7 @@ end)
 
 RegisterServerEvent('gcPhone:rejectCall')
 AddEventHandler('gcPhone:rejectCall', function (infoCall)
+
     local _source = source
     local id = infoCall.id
     if AppelsEnCours[id] ~= nil then
@@ -475,6 +476,7 @@ AddEventHandler('gcPhone:rejectCall', function (infoCall)
         AppelsEnCours[id] = nil
     end
 end)
+
 
 RegisterServerEvent('gcPhone:appelsDeleteHistorique')
 AddEventHandler('gcPhone:appelsDeleteHistorique', function (numero)
@@ -531,7 +533,45 @@ AddEventHandler('gcPhone:playerLoaded',function(src)
         TriggerClientEvent('gcPhone:getBourse', sourcePlayer, getBourse())
         sendHistoriqueCall(sourcePlayer, num)
     end)
+	local player = exports.money:getaccount(sourcePlayer)
+    TriggerClientEvent('gcPhone:UpdateBank', sourcePlayer, player)
 end)
+
+RegisterNetEvent('gcPhone:CheckTranscrion')
+AddEventHandler('gcPhone:CheckTranscrion', function(id, amount) 
+    local src = source
+    local id = tonumber(id)
+    local xPlayer = exports.money:getaccount(src)
+    local zPlayer = exports.money:getaccount(id)
+    amount = tonumber(amount)
+    if(amount < 0 or amount == nil) then
+        exports.money:bankNotify(_source, "Invalid amount.")
+    else 
+        local quickmath = xPlayer.bank - amount;
+        if(quickmath < 0 or quickmath == nil) then
+            exports.money:bankNotify(_source, "There was an error getting the account Information.")
+        else 
+            local xarray = {cash = xPlayer.amount, bank = quickmath}
+            local zarray = {cash = zPlayer.amount, bank = zPlayer.bank + amount}
+            exports.money:updateaccount(src, xarray)
+            exports.money:updateaccount(id, zarray)
+            exports.money:bankNotify(src, "You have transfered ~r~$" .. amount .. " to " .. GetPlayerName(tonumber(id)) .. " [#" .. id .. "]")
+            exports.money:bankNotify(id, "You have received: ~g~$" .. amount .. " from ~g~" .. GetPlayerName(tonumber(src)) .. " [#" .. src .. "]")
+            local player = exports.money:getaccount(id)
+            local shit = exports.money:getaccount(src)
+            TriggerClientEvent('gcPhone:UpdateBank', id, player)
+            TriggerClientEvent('gcPhone:UpdateBank', src, shit)
+        end	
+    end
+end)
+
+RegisterNetEvent('gcPhone:UpdateBANKKKKK')
+AddEventHandler('gcPhone:UpdateBANKKKKK', function() 
+    local src = source
+    local player = exports.money:getaccount(src)
+    TriggerClientEvent('gcPhone:UpdateBank', src, player)
+end)
+
 
 RegisterServerEvent('gcPhone:allUpdate')
 AddEventHandler('gcPhone:allUpdate', function()

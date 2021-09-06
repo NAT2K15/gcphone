@@ -79,7 +79,8 @@ client_script {
 	"client/animation.lua",
 	"client/client.lua",
 	"client/app_tchat.lua",
-	"client/twitter.lua"
+	"client/twitter.lua",
+	"client/bank.lua"
 }
 
 server_script {

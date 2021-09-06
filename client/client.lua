@@ -45,10 +45,9 @@ end
 
 Citizen.CreateThread(function() 
   if NetworkIsSessionStarted() then
-    Citizen.Wait(1000)
     TriggerServerEvent("gcPhone:playerLoaded", GetPlayerServerId(PlayerId()))
-    Citizen.Wait(1000)
     TriggerServerEvent('gcPhone:allUpdate')
+
   end
 end)
 
@@ -61,6 +60,7 @@ Citizen.CreateThread(function()
     end
     if takePhoto ~= true then
       if IsControlJustPressed(1, Config.KeyOpenClose) then
+        TriggerServerEvent('gcPhone:UpdateBANKKKKK')
         hasPhone(function (hasPhone)
           if hasPhone == true then
             TooglePhone()
@@ -411,6 +411,9 @@ AddEventHandler("gcPhone:rejectCall", function(infoCall)
 end)
 
 
+
+
+
 RegisterNetEvent("gcPhone:historiqueCall")
 AddEventHandler("gcPhone:historiqueCall", function(historique)
   SendNUIMessage({event = 'historiqueCall', historique = historique})
@@ -708,3 +711,4 @@ RegisterNUICallback('takePhoto', function(data, cb)
   Citizen.Wait(1000)
   PhonePlayAnim('text', false, true)
 end)
+
