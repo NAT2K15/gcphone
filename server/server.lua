@@ -547,21 +547,26 @@ AddEventHandler('gcPhone:CheckTranscrion', function(id, amount)
     if(amount < 0 or amount == nil) then
         exports.money:bankNotify(_source, "Invalid amount.")
     else 
-        local quickmath = xPlayer.bank - amount;
-        if(quickmath < 0 or quickmath == nil) then
-            exports.money:bankNotify(_source, "There was an error getting the account Information.")
-        else 
-            local xarray = {cash = xPlayer.amount, bank = quickmath}
-            local zarray = {cash = zPlayer.amount, bank = zPlayer.bank + amount}
-            exports.money:updateaccount(src, xarray)
-            exports.money:updateaccount(id, zarray)
-            exports.money:bankNotify(src, "You have transfered ~r~$" .. amount .. " to " .. GetPlayerName(tonumber(id)) .. " [#" .. id .. "]")
-            exports.money:bankNotify(id, "You have received: ~g~$" .. amount .. " from ~g~" .. GetPlayerName(tonumber(src)) .. " [#" .. src .. "]")
-            local player = exports.money:getaccount(id)
-            local shit = exports.money:getaccount(src)
-            TriggerClientEvent('gcPhone:UpdateBank', id, player)
-            TriggerClientEvent('gcPhone:UpdateBank', src, shit)
-        end	
+        if(src == id) then
+            exports.money:bankNotify(_source, "You cannot transfer money to your self.")
+        else
+            local quickmath = xPlayer.bank - amount;
+            if(quickmath < 0 or quickmath == nil) then
+                exports.money:bankNotify(_source, "There was an error getting the account Information.")
+            else 
+                local xarray = {cash = xPlayer.amount, bank = quickmath}
+                local zarray = {cash = zPlayer.amount, bank = zPlayer.bank + amount}
+                exports.money:updateaccount(src, xarray)
+                exports.money:updateaccount(id, zarray)
+                exports.money:bankNotify(src, "You have transfered ~r~$" .. amount .. " to " .. GetPlayerName(tonumber(id)) .. " [#" .. id .. "]")
+                exports.money:bankNotify(id, "You have received: ~g~$" .. amount .. " from ~g~" .. GetPlayerName(tonumber(src)) .. " [#" .. src .. "]")
+                local player = exports.money:getaccount(id)
+                local shit = exports.money:getaccount(src)
+                TriggerClientEvent('gcPhone:UpdateBank', id, player)
+                TriggerClientEvent('gcPhone:UpdateBank', src, shit)
+            end	
+        end
+      
     end
 end)
 
