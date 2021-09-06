@@ -548,7 +548,7 @@ AddEventHandler('gcPhone:CheckTranscrion', function(id, amount)
         exports.money:bankNotify(_source, "Invalid amount.")
     else 
         if(src == id) then
-            exports.money:bankNotify(_source, "You cannot transfer money to your self.")
+            exports.money:bankNotify(src, "You cannot transfer money to your self.")
         else
             local quickmath = xPlayer.bank - amount;
             if(quickmath < 0 or quickmath == nil) then
