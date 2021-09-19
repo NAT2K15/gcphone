@@ -60,7 +60,9 @@ Citizen.CreateThread(function()
     end
     if takePhoto ~= true then
       if IsControlJustPressed(1, Config.KeyOpenClose) then
-        TriggerServerEvent('gcPhone:UpdateBANKKKKK')
+        if(Config.enable_money_system == true) then
+          TriggerServerEvent('gcPhone:UpdateBANKKKKK')
+        end
         hasPhone(function (hasPhone)
           if hasPhone == true then
             TooglePhone()
