@@ -306,7 +306,11 @@ end)
 --====================================================================================
 --  Function client | Contacts
 --====================================================================================
-function addContact(display, num) 
+function addContact(display, num)
+    if num == nil or display == nil then
+      print("[WARNING]: Display or number is equal to null, aborting adding content")
+      return
+    end 
     TriggerServerEvent('gcPhone:addContact', display, num)
 end
 
@@ -575,7 +579,11 @@ end)
 --====================================================================================
 --  Event - Contacts
 --====================================================================================
-RegisterNUICallback('addContact', function(data, cb) 
+RegisterNUICallback('addContact', function(data, cb)
+  if data.num == nil or data.display == nil then
+    print("[WARNING]: Display or number is equal to null, aborting adding content")
+    return
+  end
   TriggerServerEvent('gcPhone:addContact', data.display, data.phoneNumber)
 end)
 RegisterNUICallback('updateContact', function(data, cb)
